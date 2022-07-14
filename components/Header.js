@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 
 import { Notification } from "iconsax-react";
+import { useRouter } from "next/router";
 
 const container = {
   initial: {
@@ -23,6 +24,9 @@ const container = {
 
 const Header = () => {
   const [hasScrolled, setHasScrolled] = useState(false);
+
+  const router = useRouter();
+  const currentRoute = router.pathname;
 
   const changeNavbar = () => {
     if (window.scrollY >= 90) {
@@ -46,22 +50,44 @@ const Header = () => {
           className="container"
         >
           <motion.h1 className="logo">
-            <Link href="/">Movium</Link>
+            <Link href="/">
+              <a className="logo-main">Movium</a>
+            </Link>
           </motion.h1>
           <ul className="nav-links">
             <li>
-              <Link href="/">Home</Link>
+              <Link href="/">
+                <a className={currentRoute === "/" ? "active" : "not_active"}>
+                  Home
+                </a>
+              </Link>
             </li>
             <li>
-              <Link href="/movies">Movies</Link>
+              <Link href="/movies">
+                <a
+                  className={
+                    currentRoute === "/movies" ? "active" : "not_active"
+                  }
+                >
+                  Movies
+                </a>
+              </Link>
             </li>
             <li>
-              <Link href="/series">Series</Link>
+              <Link href="/series">
+                <a
+                  className={
+                    currentRoute === "/series" ? "active" : "not_active"
+                  }
+                >
+                  Series
+                </a>
+              </Link>
             </li>
           </ul>
 
           <div className="container-icons">
-            <Notification size="32" color="#697689" className="icons" />
+            <Notification size="32" color="white" className="icons" />
           </div>
         </motion.div>
       </div>
@@ -110,6 +136,16 @@ const Wrapper = styled.div`
     font-weight: 600;
     font-size: 30px;
     line-height: 45px;
+    color: white;
+
+    @media (max-width: 768px) {
+      font-size: 20px;
+    }
+  }
+
+  .logo-main {
+    text-decoration: none;
+    color: white;
   }
 
   .nav-links {
@@ -130,11 +166,25 @@ const Wrapper = styled.div`
     font-size: 20px;
     line-height: 30px;
     cursor: pointer;
+    transition: all 0.35s ease-in-out;
+
+    @media (max-width: 768px) {
+      font-size: 14px;
+      margin: 0 0 0 3px;
+      padding: 5px;
+    }
   }
 
-  a {
+  .active {
+    text-decoration: none;
+    color: #2547fc;
+    transition: all 0.35s ease-in-out;
+  }
+
+  .not_active {
     text-decoration: none;
     color: white;
+    transition: all 0.35s ease-in-out;
   }
 
   .container-icons {
@@ -142,10 +192,15 @@ const Wrapper = styled.div`
     justify-content: center;
     align-items: center;
     gap: 5px;
+
+    @media (max-width: 768px) {
+      display: none;
+    }
   }
 
   .icons {
-    background: #d9d9d9;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(120px);
     border: 1px solid #c9c9c9;
     border-radius: 10px;
     padding: 5px;

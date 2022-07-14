@@ -2,49 +2,51 @@ import React from "react";
 import styled from "styled-components";
 import { Carousel } from "react-responsive-carousel";
 import { bgImage, coverImage } from "../utils/image";
+import { Swiper, SwiperSlide } from "swiper/react";
+import SwiperCore, { AutoPlay } from "swiper";
 
 const HeroSection = ({ getTrending }) => {
-  console.log(getTrending);
+
+  SwiperCore.use([AutoPlay]);
 
   return (
     <>
       <Wrapper>
-        <Carousel
-          autoPlay={true}
-          infiniteLoop={true}
-          showArrows={false}
-          showStatus={false}
-          showIndicators={false}
-        >
+        <Swiper grabCursor={true}>
           {getTrending.results.map((data) => {
             return (
-              <BgContainer key={data.id} image={bgImage + data.backdrop_path}>
-                <div className="overlay"></div>
-                <div className="details-main">
-                  <div className="details">
-                    <h3 className="title">
-                      {data.title || data.original_name}
-                    </h3>
-                    <h5 className="overview">
-                      {data.overview.length > 120
-                        ? data.overview.slice(0, 150) + "..."
-                        : data.overview}
-                    </h5>
-                    <div className="buttons">
-                      <Button primary>View Trailer</Button>
-                      <Button>Details</Button>
+              <SwiperSlide key={data.id}>
+                <BgContainer
+                  key={data.id}
+                  style={{
+                    background: `url(${
+                      bgImage + data.backdrop_path
+                    }) no-repeat center center/cover`,
+                  }}
+                >
+                  <div className="overlay"></div>
+                  <div className="details-main">
+                    <div className="details">
+                      <h3 className="title">
+                        {data.title || data.original_name}
+                      </h3>
+                      <h5 className="overview">
+                        {data.overview.length > 120
+                          ? data.overview.slice(0, 200) + "..."
+                          : data.overview}
+                      </h5>
                     </div>
+                    <img
+                      src={coverImage + data.poster_path}
+                      alt={data.title || data.original_name}
+                      className="image-cover"
+                    />
                   </div>
-                  <img
-                    src={coverImage + data.poster_path}
-                    alt={data.title || data.original_name}
-                    className="image-cover"
-                  />
-                </div>
-              </BgContainer>
+                </BgContainer>
+              </SwiperSlide>
             );
           })}
-        </Carousel>
+        </Swiper>
       </Wrapper>
     </>
   );
@@ -60,12 +62,12 @@ const Wrapper = styled.div`
 `;
 
 const BgContainer = styled.div`
-  background: url(${({ image }) => image}) no-repeat center center/cover;
   height: 100vh;
   width: 100%;
   max-width: 100%;
   z-index: -2;
   position: relative;
+  cursor: pointer;
 
   .overlay {
     z-index: -1;
@@ -76,7 +78,6 @@ const BgContainer = styled.div`
   }
 
   .details-main {
-    z-index: 1;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -112,6 +113,7 @@ const BgContainer = styled.div`
   .overview {
     color: white;
     font-size: 25px;
+    color: #969696;
     @media (max-width: 768px) {
       font-size: 15px;
       text-align: center;
@@ -119,12 +121,16 @@ const BgContainer = styled.div`
   }
 
   .image-cover {
-    width: 200px;
+    width: 250px;
     height: 400px;
     max-width: fit-content;
     max-height: max-content;
     border-radius: 5px;
-    
+
+    @media (max-width: 768px) {
+      width: 200px;
+      height: 300px;
+    }
   }
 
   .buttons {
@@ -135,7 +141,7 @@ const BgContainer = styled.div`
 `;
 
 const Button = styled.button`
-  background: ${(props) => (props.primary ? "black" : "white")};
+  background: ${(props) => (props.primary ? " #2547FC;" : "white")};
   color: ${(props) => (props.primary ? "white" : "black")};
   outline: none;
   border: none;
@@ -148,4 +154,10 @@ const Button = styled.button`
   width: max-content;
   font-weight: 600;
   font-size: 25px;
+
+  @media (max-width: 768px) {
+    font-size: 15px;
+  }
+
+  
 `;
