@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
-import { Notification, SearchNormal } from "iconsax-react";
+import { Notification } from "iconsax-react";
 
 const container = {
   initial: {
@@ -25,7 +25,7 @@ const Header = () => {
   const [hasScrolled, setHasScrolled] = useState(false);
 
   const changeNavbar = () => {
-    if (window.scrollY > -90) {
+    if (window.scrollY >= 90) {
       setHasScrolled(true);
     } else {
       setHasScrolled(false);
@@ -34,37 +34,37 @@ const Header = () => {
 
   useEffect(() => {
     document.addEventListener("scroll", changeNavbar);
-  }, []);
+  });
 
   return (
-    <Wrapper className={`${hasScrolled ? `navbar active` : `navbar`}`}>
-      <motion.div
-        variants={container}
-        initial="initial"
-        animate="animate"
-        className="container"
-      >
-        <motion.h1 className="logo">
-          <Link href="/">Movium</Link>
-        </motion.h1>
-        <ul className="nav-links">
-          <li>
-            <Link href="/">Home</Link>
-          </li>
-          <li>
-            <Link href="/movies">Movies</Link>
-          </li>
-          <li>
-            <Link href="/series">Series</Link>
-          </li>
-        </ul>
+    <Wrapper>
+      <div className={hasScrolled ? `header header_scrolled` : `header`}>
+        <motion.div
+          variants={container}
+          initial="initial"
+          animate="animate"
+          className="container"
+        >
+          <motion.h1 className="logo">
+            <Link href="/">Movium</Link>
+          </motion.h1>
+          <ul className="nav-links">
+            <li>
+              <Link href="/">Home</Link>
+            </li>
+            <li>
+              <Link href="/movies">Movies</Link>
+            </li>
+            <li>
+              <Link href="/series">Series</Link>
+            </li>
+          </ul>
 
-        <div className="container-icons">
-          <SearchNormal size="32" color="#697689" className="icons" />
-
-          <Notification size="32" color="#697689" className="icons" />
-        </div>
-      </motion.div>
+          <div className="container-icons">
+            <Notification size="32" color="#697689" className="icons" />
+          </div>
+        </motion.div>
+      </div>
     </Wrapper>
   );
 };
@@ -72,22 +72,28 @@ const Header = () => {
 export default Header;
 
 const Wrapper = styled.div`
-  height: 80px;
-  position: fixed;
+  transition: all 0.35s ease-in-out;
 
-  .active {
-    background: linear-gradient(
-      180deg,
-      #9f9f9f 0%,
-      rgba(217, 217, 217, 0) 100%
-    );
-    backdrop-filter: blur(120px);
+  .header {
+    height: 80px;
+    position: fixed;
+    z-index: 999;
+    width: 100%;
+
+    -webkit-transition: all ease-out 0.5s;
+    -moz-transition: all ease-out 0.5s;
+    -o-transition: all ease-out 0.5s;
+    transition: all ease-out 0.5s;
+
+    @media (max-width: 768px) {
+      padding: 0 20px;
+    }
   }
 
-  -webkit-transition: all ease-out 0.5s;
-  -moz-transition: all ease-out 0.5s;
-  -o-transition: all ease-out 0.5s;
-  transition: all ease-out 0.5s;
+  .header_scrolled {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(120px);
+  }
 
   .container {
     max-width: 1234px;
@@ -95,7 +101,7 @@ const Wrapper = styled.div`
     align-items: center;
     justify-content: space-between;
     margin: 0 auto;
-    height: 100%;
+    height: 80px;
   }
 
   .logo {
@@ -123,14 +129,12 @@ const Wrapper = styled.div`
     font-weight: 500;
     font-size: 20px;
     line-height: 30px;
-    /* identical to box height */
-
-    color: #000000;
+    cursor: pointer;
   }
 
   a {
     text-decoration: none;
-    color: black;
+    color: white;
   }
 
   .container-icons {
