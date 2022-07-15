@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
-import { Notification } from "iconsax-react";
+import { SearchNormal, TextalignJustifycenter } from "iconsax-react";
 import { useRouter } from "next/router";
 
 const container = {
@@ -22,7 +22,7 @@ const container = {
   },
 };
 
-const Header = () => {
+const Header = ({ toggle }) => {
   const [hasScrolled, setHasScrolled] = useState(false);
 
   const router = useRouter();
@@ -85,7 +85,13 @@ const Header = () => {
           </ul>
 
           <div className="container-icons">
-            <Notification size="32" color="white" className="icons" />
+            <SearchNormal size="32" color="#d9e3f0" className="icons search" />
+            <TextalignJustifycenter
+              size="32"
+              color="#d9e3f0"
+              className="icons ham"
+              onClick={toggle}
+            />
           </div>
         </motion.div>
       </div>
@@ -152,6 +158,10 @@ const Wrapper = styled.div`
     justify-content: center;
 
     list-style: none;
+
+    @media (max-width: 768px) {
+      display: none;
+    }
   }
 
   li {
@@ -190,10 +200,7 @@ const Wrapper = styled.div`
     justify-content: center;
     align-items: center;
     gap: 5px;
-
-    @media (max-width: 768px) {
-      display: none;
-    }
+    transition: all 0.35s ease-in-out;
   }
 
   .icons {
@@ -203,5 +210,13 @@ const Wrapper = styled.div`
     border-radius: 10px;
     padding: 5px;
     cursor: pointer;
+  }
+
+  .ham {
+    display: none;
+
+    @media (max-width: 768px) {
+      display: block;
+    }
   }
 `;
