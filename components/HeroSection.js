@@ -4,8 +4,10 @@ import { Carousel } from "react-responsive-carousel";
 import { bgImage, coverImage } from "../utils/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { AutoPlay } from "swiper";
+import { useRouter } from "next/router";
 
 const HeroSection = ({ getTrending }) => {
+  const router = useRouter();
 
   SwiperCore.use([AutoPlay]);
 
@@ -35,6 +37,15 @@ const HeroSection = ({ getTrending }) => {
                           ? data.overview.slice(0, 200) + "..."
                           : data.overview}
                       </h5>
+                      <div className="buttons">
+                        <Button
+                          primary
+                          onClick={() => router.push(`/movies/${data.id}`)}
+                        >
+                          Details
+                        </Button>
+                        <Button>Trailer</Button>
+                      </div>
                     </div>
                     <img
                       src={coverImage + data.poster_path}
@@ -65,12 +76,12 @@ const BgContainer = styled.div`
   height: 100vh;
   width: 100%;
   max-width: 100%;
-  z-index: -2;
+  z-index: 1;
   position: relative;
   cursor: pointer;
 
   .overlay {
-    z-index: -1;
+    z-index: 2;
     position: absolute;
     width: 100%;
     height: 100%;
@@ -94,6 +105,7 @@ const BgContainer = styled.div`
   }
 
   .details {
+    z-index: 4;
     text-align: left;
     font-family: "Poppins";
     display: flex;
@@ -121,6 +133,7 @@ const BgContainer = styled.div`
   }
 
   .image-cover {
+    z-index: 4;
     width: 250px;
     height: 400px;
     max-width: fit-content;
@@ -158,6 +171,4 @@ const Button = styled.button`
   @media (max-width: 768px) {
     font-size: 15px;
   }
-
-  
 `;

@@ -5,7 +5,6 @@ export default function Home({ getTrending }) {
     <>
       <div>
         <HeroSection getTrending={getTrending} />
-       
       </div>
     </>
   );
