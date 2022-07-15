@@ -3,25 +3,34 @@ import styled from "styled-components";
 import Image from "next/image";
 import { coverImage } from "../utils/image";
 
+import { Swiper, SwiperSlide } from "swiper/react";
+
 const Row = ({ data, title }) => {
   return (
     <Wrapper>
       <h2 className="title">{title}</h2>
       <div className="container">
-        {data.results.map((res) => {
-          return (
-            <div key={res.id} className="data__container">
-              <Image
-                src={coverImage + res.poster_path}
-                alt={res.title || res.original_title}
-                layout="fixed"
-                height="350px"
-                width="250px"
-                className="container-image"
-              />
-            </div>
-          );
-        })}
+        <Swiper
+          grabCursor={true}
+          spaceBetween={10}
+          slidesPerView="auto">
+          {data.results.map((res) => {
+            return (
+              <SwiperSlide key={res.id}>
+                <div key={res.id} className="data__container">
+                  <Image
+                    src={coverImage + res.poster_path}
+                    alt={res.title || res.original_title}
+                    layout="intrinsic"
+                    height="350px"
+                    width="250px"
+                    className="container-image"
+                  />
+                </div>
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
       </div>
     </Wrapper>
   );
@@ -49,6 +58,42 @@ const Wrapper = styled.div`
     padding: 0 0 0 30px;
   }
 
+  .swiper-slide {
+    width: 18%;
+
+    @media (max-width: 1280px) {
+      width: 21%;
+    }
+
+    @media (max-width: 1024px) {
+      width: 24%;
+    }
+
+    @media (max-width: 820px) {
+      width: 34%;
+    }
+
+    @media (max-width: 768px) {
+      width: 36%;
+    }
+
+    @media (max-width: 540px) {
+      width: 50%;
+    }
+
+    @media (max-width: 420px) {
+      width: 70%;
+    }
+
+    @media (max-width: 380px) {
+      width: 75%;
+    }
+
+    @media (max-width: 280px) {
+      width: 100%;
+    }
+  }
+
   .container::-webkit-scrollbar {
     display: none;
     -ms-overflow-style: none;
@@ -73,5 +118,8 @@ const Wrapper = styled.div`
 
   .container-image {
     border-radius: 5px;
+
+    @media (max-width: 412px) {
+    }
   }
 `;
