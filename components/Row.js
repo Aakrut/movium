@@ -4,20 +4,31 @@ import Image from "next/image";
 import { coverImage } from "../utils/image";
 
 import { Swiper, SwiperSlide } from "swiper/react";
+import { useRouter } from "next/router";
 
 const Row = ({ data, title }) => {
+
+  const router = useRouter();
+
   return (
     <Wrapper>
       <h2 className="title">{title}</h2>
       <div className="container">
-        <Swiper
-          grabCursor={true}
-          spaceBetween={10}
-          slidesPerView="auto">
+        <Swiper grabCursor={true} spaceBetween={10} slidesPerView="auto">
           {data.results.map((res) => {
             return (
               <SwiperSlide key={res.id}>
-                <div key={res.id} className="data__container">
+                <div
+                  key={res.id}
+                  className="data__container"
+                  onClick={() => {
+                    if (res.media_type === "tv") {
+                      router.push(`/show/${res.id}`);
+                    } else {
+                      router.push(`/movies/${res.id}`);
+                    }
+                  }}
+                >
                   <Image
                     src={coverImage + res.poster_path}
                     alt={res.title || res.original_title}
