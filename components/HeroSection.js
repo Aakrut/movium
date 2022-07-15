@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { AutoPlay } from "swiper";
 import { useRouter } from "next/router";
 
-const HeroSection = ({ getTrending }) => {
+const HeroSection = ({ res }) => {
   const router = useRouter();
 
   SwiperCore.use([AutoPlay]);
@@ -14,7 +14,7 @@ const HeroSection = ({ getTrending }) => {
     <>
       <Wrapper>
         <Swiper grabCursor={true}>
-          {getTrending.results.map((data) => {
+          {res.results.map((data) => {
             return (
               <SwiperSlide key={data.id}>
                 <BgContainer

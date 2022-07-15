@@ -85,7 +85,12 @@ const Header = ({ toggle }) => {
           </ul>
 
           <div className="container-icons">
-            <SearchNormal size="32" color="#d9e3f0" className="icons search" />
+            <SearchNormal
+              size="32"
+              color="#d9e3f0"
+              className="icons search"
+              onClick={() => console.log("click")}
+            />
             <TextalignJustifycenter
               size="32"
               color="#d9e3f0"

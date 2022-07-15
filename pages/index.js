@@ -10,7 +10,7 @@ export default function Home({
   return (
     <>
       <div>
-        <HeroSection getTrending={getTrending} />
+        <HeroSection res={getTrending} />
         <Row data={getPopularMovies} title="Popular Movies" />
         <Row data={getPopularShows} title="Popular Shows" />
         <Row data={getTopRatedMovies} title="Top Rated Movies" />

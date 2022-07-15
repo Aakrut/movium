@@ -1,7 +1,43 @@
 import React from "react";
+import { HeroSection, Row } from "../../components";
 
-const show = () => {
-  return <div>series</div>;
+const show = ({ getOnTheAir, getTodaysSpecial, getTopRatedShows }) => {
+  return (
+    <div>
+      <HeroSection res={getOnTheAir} />
+      <Row data={getTopRatedShows} title="Top Rated Show" />
+      <Row data={getTodaysSpecial} title="Today's Special" />
+    </div>
+  );
 };
 
 export default show;
+
+export async function getServerSideProps() {
+  const [getOnTheAirRes, getTodaysSpecialRes, getTopRatedShowsRes] =
+    await Promise.all([
+      fetch(
+        `https://api.themoviedb.org/3/tv/on_the_air?api_key=${process.env.API_KEY}&language=en-US&page=1`
+      ),
+      fetch(
+        `https://api.themoviedb.org/3/tv/airing_today?api_key=${process.env.API_KEY}&language=en-US&page=1`
+      ),
+      fetch(
+        `https://api.themoviedb.org/3/tv/top_rated?api_key=${process.env.API_KEY}&language=en-US&page=1`
+      ),
+    ]);
+
+  const [getOnTheAir, getTodaysSpecial, getTopRatedShows] = await Promise.all([
+    getOnTheAirRes.json(),
+    getTodaysSpecialRes.json(),
+    getTopRatedShowsRes.json(),
+  ]);
+
+  return {
+    props: {
+      getOnTheAir: getOnTheAir,
+      getTodaysSpecial: getTodaysSpecial,
+      getTopRatedShows: getTopRatedShows,
+    },
+  };
+}
