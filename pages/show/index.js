@@ -1,7 +1,7 @@
 import React from "react";
 
-const series = () => {
+const show = () => {
   return <div>series</div>;
 };
 
-export default series;
+export default show;

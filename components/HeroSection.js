@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { Carousel } from "react-responsive-carousel";
 import { bgImage, coverImage } from "../utils/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { AutoPlay } from "swiper";
@@ -40,13 +39,19 @@ const HeroSection = ({ getTrending }) => {
                       <div className="buttons">
                         <Button
                           primary
-                          onClick={() => router.push(`/movies/${data.id}`)}
+                          onClick={() => {
+                            if (data.media_type === "tv") {
+                              router.push(`/show/${data.id}`);
+                            } else {
+                              router.push(`/movies/${data.id}`);
+                            }
+                          }}
                         >
                           Details
                         </Button>
-                        <Button>Trailer</Button>
                       </div>
                     </div>
+
                     <img
                       src={coverImage + data.poster_path}
                       alt={data.title || data.original_name}

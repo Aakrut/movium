@@ -74,13 +74,11 @@ const Header = () => {
               </Link>
             </li>
             <li>
-              <Link href="/series">
+              <Link href="/show">
                 <a
-                  className={
-                    currentRoute === "/series" ? "active" : "not_active"
-                  }
+                  className={currentRoute === "/show" ? "active" : "not_active"}
                 >
-                  Series
+                  Tv Shows
                 </a>
               </Link>
             </li>
@@ -106,10 +104,10 @@ const Wrapper = styled.div`
     z-index: 999;
     width: 100%;
 
-    -webkit-transition: all ease-out 0.5s;
-    -moz-transition: all ease-out 0.5s;
-    -o-transition: all ease-out 0.5s;
-    transition: all ease-out 0.5s;
+    -webkit-transition: all ease-in-out 0.35s;
+    -moz-transition: all ease-in-out 0.35s;
+    -o-transition: all ease-in-out 0.35s;
+    transition: all ease-in-out 0.35s;
 
     @media (max-width: 768px) {
       padding: 0 20px;
@@ -117,7 +115,7 @@ const Wrapper = styled.div`
   }
 
   .header_scrolled {
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(120px);
   }
 
