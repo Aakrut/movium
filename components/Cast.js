@@ -45,7 +45,11 @@ const Cast = ({ data, title }) => {
                       : res.name}
                   </h3>
 
-                  <h3 className="character">{res.character}</h3>
+                  <h3 className="character">
+                    {res.character?.length > 30
+                      ? res.character?.slice(0, 30) + "..."
+                      : res.character}
+                  </h3>
                 </div>
               </SwiperSlide>
             );
