@@ -89,7 +89,7 @@ const Header = ({ toggle }) => {
               size="32"
               color="#d9e3f0"
               className="icons search"
-              onClick={() => console.log("click")}
+              onClick={() => router.push(`/search`)}
             />
             <TextalignJustifycenter
               size="32"

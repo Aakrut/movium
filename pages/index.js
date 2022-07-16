@@ -7,6 +7,7 @@ export default function Home({
   getTopRatedMovies,
   getTopRatedShows,
 }) {
+  console.log(getPopularShows);
   return (
     <>
       <div>

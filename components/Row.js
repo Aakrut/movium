@@ -7,7 +7,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { useRouter } from "next/router";
 
 const Row = ({ data, title }) => {
-
   const router = useRouter();
 
   return (
@@ -37,6 +36,23 @@ const Row = ({ data, title }) => {
                     width="250px"
                     className="container-image"
                   />
+                  <div className="overlay">
+                    <p className="rating">{res.vote_average}</p>
+                  </div>
+                  <h3 className="name">
+                    {res.title?.length > 30 ||
+                    res.original_title?.length > 30 ||
+                    res.name?.length > 30 ||
+                    res.original_name?.length > 30
+                      ? res.title?.slice(0, 30) + "..." ||
+                        res.original_title?.slice(0, 30) + "..." ||
+                        res.name?.slice(0, 30) + "..." ||
+                        res.original_name?.slice(0, 30) + "..."
+                      : res.title ||
+                        res.original_title ||
+                        res.name ||
+                        res.original_name}
+                  </h3>
                 </div>
               </SwiperSlide>
             );
@@ -71,6 +87,7 @@ const Wrapper = styled.div`
 
   .swiper-slide {
     width: 18%;
+    border-radius: 5px;
 
     @media (max-width: 1280px) {
       width: 21%;
@@ -125,12 +142,40 @@ const Wrapper = styled.div`
     height: max-content;
     margin: 0 10px 0 0;
     border-radius: 12px;
+    cursor: pointer;
   }
 
   .container-image {
     border-radius: 5px;
-
+    position: relative;
+    transition: all 0.35s ease-in-out;
     @media (max-width: 412px) {
     }
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50px;
+    height: 50px;
+    background: rgba(0, 0, 0, 0.5);
+    transition: all 0.35s ease-in-out;
+    border-radius: 5px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+  }
+
+  .rating {
+    color: #fff500;
+    font-family: "Poppins";
+  }
+
+  .name {
+    color: white;
+    font-family: "Poppins";
+    margin: 0 10px 0 0;
   }
 `;
