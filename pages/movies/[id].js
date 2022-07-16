@@ -4,7 +4,7 @@ import { bgImage, coverImage } from "../../utils/image";
 import { Back, VideoCircle } from "iconsax-react";
 import { useRouter } from "next/router";
 import Image from "next/image";
-import { Row } from "../../components";
+import { Cast, Row } from "../../components";
 
 const Movie = ({ movieDetails, similarMovies, castMember }) => {
   const router = useRouter();
@@ -78,6 +78,7 @@ const Movie = ({ movieDetails, similarMovies, castMember }) => {
           </div>
         </div>
       </Wrapper>
+      <Cast data={castMember} title="Cast & Crew" />
       <Row data={similarMovies} title="Similar Movies" />
     </>
   );
