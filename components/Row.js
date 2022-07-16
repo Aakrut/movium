@@ -37,7 +37,7 @@ const Row = ({ data, title }) => {
                     className="container-image"
                   />
                   <div className="overlay">
-                    <p className="rating">{res.vote_average}</p>
+                    <p className="rating">{res.vote_average.toFixed(1)}</p>
                   </div>
                   <h3 className="name">
                     {res.title?.length > 30 ||
