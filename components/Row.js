@@ -94,7 +94,11 @@ const Wrapper = styled.div`
     }
 
     @media (max-width: 1024px) {
-      width: 24%;
+      width: 26%;
+    }
+
+    @media (max-width: 912px) {
+      width: 30%;
     }
 
     @media (max-width: 820px) {
