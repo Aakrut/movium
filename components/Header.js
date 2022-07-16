@@ -196,7 +196,7 @@ const Wrapper = styled.div`
 
   .not_active {
     text-decoration: none;
-    color: white;
+    color: #969696;
     transition: all 0.35s ease-in-out;
   }
 
