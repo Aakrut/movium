@@ -14,7 +14,7 @@ const RowShow = ({ data, title }) => {
       <h2 className="title">{title}</h2>
       <div className="container">
         <Swiper grabCursor={true} spaceBetween={10} slidesPerView="auto">
-          {data.results.map((res) => {
+          {data?.results?.map((res) => {
             return (
               <SwiperSlide key={res.id}>
                 <div
