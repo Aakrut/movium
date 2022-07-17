@@ -6,7 +6,7 @@ import { coverImage } from "../utils/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useRouter } from "next/router";
 
-const Cast = ({ data, title }) => {
+const RowShow = ({ data, title }) => {
   const router = useRouter();
 
   return (
@@ -14,16 +14,18 @@ const Cast = ({ data, title }) => {
       <h2 className="title">{title}</h2>
       <div className="container">
         <Swiper grabCursor={true} spaceBetween={10} slidesPerView="auto">
-          {data.cast?.map((res) => {
+          {data.results.map((res) => {
             return (
               <SwiperSlide key={res.id}>
                 <div
                   key={res.id}
                   className="data__container"
-                  onClick={() => router.push(`/cast/${res.id}`)}
+                  onClick={() => {
+                    router.push(`/show/${res.id}`);
+                  }}
                 >
                   <Image
-                    src={coverImage + res.profile_path}
+                    src={coverImage + res.poster_path}
                     alt={res.title || res.original_title}
                     layout="intrinsic"
                     height="350px"
@@ -31,18 +33,21 @@ const Cast = ({ data, title }) => {
                     className="container-image"
                   />
                   <div className="overlay">
-                    <p className="rating">{res.popularity.toFixed(1)}</p>
+                    <p className="rating">{res.vote_average.toFixed(1)}</p>
                   </div>
                   <h3 className="name">
-                    {res.name?.length > 30
-                      ? res.name?.slice(0, 30) + "..."
-                      : res.name}
-                  </h3>
-
-                  <h3 className="character">
-                    {res.character?.length > 30
-                      ? res.character?.slice(0, 30) + "..."
-                      : res.character}
+                    {res.title?.length > 30 ||
+                    res.original_title?.length > 30 ||
+                    res.name?.length > 30 ||
+                    res.original_name?.length > 30
+                      ? res.title?.slice(0, 30) + "..." ||
+                        res.original_title?.slice(0, 30) + "..." ||
+                        res.name?.slice(0, 30) + "..." ||
+                        res.original_name?.slice(0, 30) + "..."
+                      : res.title ||
+                        res.original_title ||
+                        res.name ||
+                        res.original_name}
                   </h3>
                 </div>
               </SwiperSlide>
@@ -54,7 +59,7 @@ const Cast = ({ data, title }) => {
   );
 };
 
-export default Cast;
+export default RowShow;
 
 const Wrapper = styled.div`
   margin: 10px 0;
@@ -170,12 +175,6 @@ const Wrapper = styled.div`
 
   .name {
     color: white;
-    font-family: "Poppins";
-    margin: 0 10px 0 0;
-  }
-
-  .character {
-    color: #2547fc;
     font-family: "Poppins";
     margin: 0 10px 0 0;
   }

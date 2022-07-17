@@ -1,4 +1,4 @@
-import { HeroSection, Row } from "../components";
+import { HeroSection, Row, RowShow } from "../components";
 
 export default function Home({
   getTrending,
@@ -13,9 +13,9 @@ export default function Home({
       <div>
         <HeroSection res={getTrending} />
         <Row data={getPopularMovies} title="Popular Movies" />
-        <Row data={getPopularShows} title="Popular Shows" />
+        <RowShow data={getPopularShows} title="Popular Shows" />
         <Row data={getTopRatedMovies} title="Top Rated Movies" />
-        <Row data={getTopRatedShows} title="Most Watched Shows" />
+        <RowShow data={getTopRatedShows} title="Most Watched Shows" />
       </div>
     </>
   );

@@ -3,3 +3,4 @@ export { default as HeroSection } from "./HeroSection";
 export { default as Row } from "./Row";
 export { default as Sidebar } from "./Sidebar";
 export { default as Cast } from "./Cast";
+export { default as RowShow } from "./RowShow";

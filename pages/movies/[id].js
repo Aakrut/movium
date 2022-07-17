@@ -9,8 +9,6 @@ import { Cast, Row } from "../../components";
 const Movie = ({ movieDetails, similarMovies, castMember }) => {
   const router = useRouter();
 
-  console.log(movieDetails);
-
   return (
     <>
       <Wrapper>
@@ -50,7 +48,7 @@ const Movie = ({ movieDetails, similarMovies, castMember }) => {
               <div className="details-3">
                 <p className="det lang">{movieDetails.original_language}</p>
                 <p className="det rate">
-                  Rating - {movieDetails.vote_average.toFixed(1)}/10
+                  Rating - {movieDetails.vote_average?.toFixed(1)}/10
                 </p>
                 <p className="det">Runtime - {movieDetails.runtime} minutes</p>
               </div>
