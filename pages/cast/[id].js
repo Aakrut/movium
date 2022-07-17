@@ -16,8 +16,6 @@ const CastM = ({ castDetails, castCredits }) => {
           <div onClick={() => router.back()} className="return-page">
             <Back size="32" color="#d9e3f0" className="return-icon" />
           </div>
-
-          <div></div>
         </div>
 
         <div className="container">
