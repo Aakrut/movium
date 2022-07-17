@@ -8,6 +8,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "axios": "^0.27.2",
     "boxicons": "^2.1.1",
     "dotenv": "^10.0.0",
     "framer-motion": "^6.4.3",
