@@ -13,8 +13,12 @@ const Cast = ({ data, title }) => {
     <Wrapper>
       <h2 className="title">{title}</h2>
       <div className="container">
-        <Swiper grabCursor={true} spaceBetween={10} slidesPerView="auto">
-          {data.cast?.map((res) => {
+        <Swiper
+          grabCursor={true}
+          spaceBetween={data.cast?.length > 4 ? 10:40}
+          slidesPerView="auto"
+        >
+          {data?.cast?.map((res) => {
             return (
               <SwiperSlide key={res.id}>
                 <div
