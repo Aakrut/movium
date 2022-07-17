@@ -11,10 +11,6 @@ const Movie = ({ movieDetails, similarMovies, castMember }) => {
 
   console.log(movieDetails);
 
-  console.log(similarMovies);
-
-  console.log(castMember);
-
   return (
     <>
       <Wrapper>
@@ -51,8 +47,16 @@ const Movie = ({ movieDetails, similarMovies, castMember }) => {
                 {movieDetails.title || movieDetails.original_title}
               </h1>
 
+              <div className="details-3">
+                <p className="det lang">{movieDetails.original_language}</p>
+                <p className="det rate">
+                  Rating - {movieDetails.vote_average.toFixed(1)}/10
+                </p>
+                <p className="det">Runtime - {movieDetails.runtime} minutes</p>
+              </div>
+
               <div className="genres-container">
-                {movieDetails.genres.map((data) => (
+                {movieDetails.genres?.slice(0, 3).map((data) => (
                   <p key={data.id} className="genres">
                     {data.name}
                   </p>
@@ -71,9 +75,12 @@ const Movie = ({ movieDetails, similarMovies, castMember }) => {
                 <h4 className="overview">{movieDetails.overview}</h4>
               </div>
 
-              <h3 className="tagline">
-                Tag Line : <span className="tag"> {movieDetails.tagline} </span>
-              </h3>
+              {movieDetails.tagline ? (
+                <p className="tagline">
+                  Tag Line :{" "}
+                  <span className="tag"> {movieDetails.tagline} </span>
+                </p>
+              ) : null}
             </div>
           </div>
         </div>
@@ -250,12 +257,27 @@ const Wrapper = styled.div`
     width: max-content;
     padding: 5px 10px;
     border-radius: 12px;
+
+    @media (max-width: 912px) {
+      inline-size: auto;
+      overflow-wrap: break-word;
+    }
+
+    @media (max-width: 820px) {
+      inline-size: auto;
+      overflow-wrap: break-word;
+    }
+
     @media (max-width: 640px) {
       font-size: 15px;
+      inline-size: 100%;
+      overflow-wrap: break-word;
     }
 
     @media (max-width: 375px) {
       font-size: 11px;
+      inline-size: 100%;
+      overflow-wrap: break-word;
     }
 
     @media (max-width: 280px) {
@@ -265,6 +287,17 @@ const Wrapper = styled.div`
 
   .tag {
     color: #2547fc;
+    overflow-wrap: break-word;
+
+    @media (max-width: 640px) {
+      inline-size: 100%;
+      overflow-wrap: break-word;
+    }
+
+    @media (max-width: 375px) {
+      inline-size: 100%;
+      overflow-wrap: break-word;
+    }
   }
 
   .details-2 {
@@ -283,6 +316,32 @@ const Wrapper = styled.div`
       align-items: center;
       padding: 0 12px;
     }
+  }
+
+  .details-3 {
+    font-family: "Poppins";
+    display: flex;
+    gap: 10px;
+  }
+
+  .det {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 5px 10px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 12px;
+    margin-bottom: 10px;
+
+    @media (max-width: 640px) {
+      font-size: 12px;
+    }
+  }
+
+  .rate {
+    color: #fff500;
+  }
+
+  .lang {
+    color: #2547fc;
   }
 
   .overview-container {
