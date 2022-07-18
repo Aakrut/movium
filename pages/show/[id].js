@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { bgImage, coverImage } from "../../utils/image";
 import { Back, VideoCircle } from "iconsax-react";
 import { useRouter } from "next/router";
 import Image from "next/image";
-import { Cast, Row, RowShow } from "../../components";
+import { Cast, RowShow, VideoModal } from "../../components";
 
-const Series = ({ showDetails, similarShow, castMember }) => {
+const Series = ({ showDetails, similarShow, castMember, videoTrailer }) => {
   const router = useRouter();
+
+  const [showModal, setShowModal] = useState(false);
+
+  const toggleModal = () => setShowModal(!showModal);
 
   console.log(showDetails);
 
@@ -61,12 +65,20 @@ const Series = ({ showDetails, similarShow, castMember }) => {
                 ))}
               </div>
 
-              <div>
-                <button className="trailer-button">
+              <div onClick={toggleModal}>
+                <button className="trailer-button" onClick={toggleModal}>
                   <VideoCircle size="32" color="#d9e3f0" variant="Bold" />
                   Watch Trailer
                 </button>
               </div>
+
+              {showModal ? (
+                <VideoModal
+                  toggleModal={toggleModal}
+                  setShowModal={setShowModal}
+                  videoTrailer={videoTrailer}
+                />
+              ) : null}
 
               <div className="overview-container">
                 <h3 className="story-line">Story Line</h3>
@@ -106,11 +118,16 @@ export async function getServerSideProps(context) {
     `https://api.themoviedb.org/3/tv/${id}/credits?api_key=${process.env.API_KEY}&language=en-US`
   ).then((response) => response.json());
 
+  const requestTrailer = await fetch(
+    `https://api.themoviedb.org/3/tv/${id}/videos?api_key=${process.env.API_KEY}&language=en-US`
+  ).then((response) => response.json());
+
   return {
     props: {
       showDetails: request,
       similarShow: requestSimilar,
       castMember: requestCast,
+      videoTrailer: requestTrailer,
     },
   };
 }

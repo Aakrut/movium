@@ -4,8 +4,6 @@ import styled from "styled-components";
 import { CloseSquare } from "iconsax-react";
 
 const VideoModal = ({ toggleModal, videoTrailer }) => {
-  console.log(videoTrailer);
-
   const modalRef = useRef();
 
   const closeModal = (e) => {
@@ -15,7 +13,17 @@ const VideoModal = ({ toggleModal, videoTrailer }) => {
   };
 
   if (!videoTrailer?.results) {
-    return <Wrapper>No Video Trailer</Wrapper>;
+    return (
+      <Wrapper onClick={closeModal} ref={modalRef}>
+        <CloseSquare
+          size="32"
+          color="#d9e3f0"
+          className="close-button"
+          onClick={toggleModal}
+        />
+        No Video Trailer
+      </Wrapper>
+    );
   }
 
   return (
@@ -59,6 +67,7 @@ const Wrapper = styled.div`
   right: 0;
   bottom: 0;
   transition: all 0.35s ease-in-out;
+  font-family: "Poppins";
 
   .close-button {
     position: fixed;
