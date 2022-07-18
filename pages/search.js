@@ -199,6 +199,19 @@ const Wrapper = styled.div`
     font-weight: 500;
     margin-top: 100px;
     text-align: center;
+    font-size: 60px;
+
+    @media (max-width: 768px) {
+      font-size: 45px;
+    }
+
+    @media (max-width: 640px) {
+      font-size: 30px;
+    }
+
+    @media (max-width: 412px) {
+      font-size: 15px;
+    }
   }
 
   .keyword {
