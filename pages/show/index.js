@@ -1,10 +1,10 @@
 import React from "react";
-import { HeroSection, Row, RowShow } from "../../components";
+import { HeroSectionShow, RowShow } from "../../components";
 
 const show = ({ getOnTheAir, getTodaysSpecial, getTopRatedShows }) => {
   return (
     <div>
-      <HeroSection res={getOnTheAir} />
+      <HeroSectionShow res={getOnTheAir} />
       <RowShow data={getTopRatedShows} title="Top Rated Show" />
       <RowShow data={getTodaysSpecial} title="Today's Special" />
     </div>

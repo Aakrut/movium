@@ -5,3 +5,4 @@ export { default as Sidebar } from "./Sidebar";
 export { default as Cast } from "./Cast";
 export { default as RowShow } from "./RowShow";
 export { default as CastCredit } from "./CastCredits";
+export { default as HeroSectionShow } from "./HeroSectionShow";
