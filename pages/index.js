@@ -1,4 +1,5 @@
 import { HeroSection, Row, RowShow } from "../components";
+import Head from "next/head";
 
 export default function Home({
   getTrending,
@@ -12,6 +13,10 @@ export default function Home({
 }) {
   return (
     <>
+      <Head>
+        <title>Movium</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <div>
         <HeroSection res={getTrending} />
         <Row data={getPopularMovies} title="Popular Movies" />

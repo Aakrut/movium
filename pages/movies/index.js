@@ -1,5 +1,6 @@
 import React from "react";
 import { HeroSection, Row } from "../../components";
+import Head from "next/head";
 
 const movies = ({
   getNowPlaying,
@@ -12,6 +13,10 @@ const movies = ({
 }) => {
   return (
     <div>
+      <Head>
+        <title>Movies</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <HeroSection res={getNowPlaying} />
       <Row data={getUpComingMovies} title="Upcoming Movies" />
       <Row data={getTopRatedMovies} title="Top Rated Movies" />

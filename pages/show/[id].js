@@ -5,6 +5,7 @@ import { Back, VideoCircle } from "iconsax-react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import { Cast, RowShow, VideoModal } from "../../components";
+import Head from "next/head";
 
 const Series = ({ showDetails, similarShow, castMember, videoTrailer }) => {
   const router = useRouter();
@@ -15,6 +16,10 @@ const Series = ({ showDetails, similarShow, castMember, videoTrailer }) => {
 
   return (
     <>
+      <Head>
+        <title>{showDetails.name || showDetails.original_name}</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <Wrapper>
         <div
           className="bg_container"

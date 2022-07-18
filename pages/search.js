@@ -5,6 +5,7 @@ import { instance } from "../instance";
 import { coverImage } from "../utils/image";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 const Search = () => {
   const [search, setSearch] = useState("");
@@ -42,6 +43,10 @@ const Search = () => {
 
   return (
     <Wrapper>
+      <Head>
+        <title>Movium - Search</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <div className="container">
         <div className="search-container">
           <input

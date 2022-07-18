@@ -1,16 +1,21 @@
 import React from "react";
 import styled from "styled-components";
-import { bgImage, coverImage } from "../../utils/image";
-import { Back, VideoCircle } from "iconsax-react";
+import { coverImage } from "../../utils/image";
+import { Back } from "iconsax-react";
 import { useRouter } from "next/router";
 import Image from "next/image";
-import { Cast, CastCredit, Row } from "../../components";
+import { CastCredit } from "../../components";
+import Head from "next/head";
 
 const CastM = ({ castDetails, castCredits }) => {
   const router = useRouter();
 
   return (
     <>
+      <Head>
+        <title>{castDetails.name || castDetails.original_name}</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <Wrapper>
         <div className="bg_container">
           <div onClick={() => router.back()} className="return-page">

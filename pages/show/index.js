@@ -1,5 +1,6 @@
 import React from "react";
 import { HeroSectionShow, RowShow } from "../../components";
+import Head from "next/head";
 
 const show = ({
   getOnTheAir,
@@ -12,6 +13,10 @@ const show = ({
 }) => {
   return (
     <div>
+      <Head>
+        <title>Movium - Show</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <HeroSectionShow res={getOnTheAir} />
       <RowShow data={getTopRatedShows} title="Top Rated Show" />
       <RowShow data={getTodaysSpecial} title="Today's Special" />
