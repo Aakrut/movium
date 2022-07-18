@@ -145,7 +145,7 @@ const Wrapper = styled.div`
     font-weight: 600;
     font-size: 30px;
     line-height: 45px;
-    color: white;
+    color: #2547fc;
 
     @media (max-width: 768px) {
       font-size: 20px;
@@ -154,7 +154,7 @@ const Wrapper = styled.div`
 
   .logo-main {
     text-decoration: none;
-    color: white;
+    color: #2547fc;
   }
 
   .nav-links {
