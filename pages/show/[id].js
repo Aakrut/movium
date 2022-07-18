@@ -13,8 +13,6 @@ const Series = ({ showDetails, similarShow, castMember, videoTrailer }) => {
 
   const toggleModal = () => setShowModal(!showModal);
 
-  console.log(showDetails);
-
   return (
     <>
       <Wrapper>
