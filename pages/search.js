@@ -1,7 +1,10 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { instance } from "../instance";
+import { coverImage } from "../utils/image";
+import Image from "next/image";
+import { useRouter } from "next/router";
 
 const Search = () => {
   const [search, setSearch] = useState("");
@@ -9,11 +12,16 @@ const Search = () => {
 
   const [searchResults, setSearchResults] = useState([]);
 
+  const [totalPages, setTotalPages] = useState(0);
+
+  const router = useRouter();
+
   const handleSearch = async () => {
     await axios
       .get(instance.fetchSearchMS(currentPage, search))
       .then((res) => {
         {
+          setTotalPages(res.data.total_pages);
           setSearchResults(res.data.results);
         }
       })
@@ -25,13 +33,12 @@ const Search = () => {
       .get(instance.fetchSearchMS(currentPage + 1, search))
       .then((res) => {
         {
+          setCurrentPage(currentPage + 1);
           setSearchResults([...searchResults, ...res.data.results]);
         }
       })
       .catch((error) => console.log(error));
   };
-
-  console.log(searchResults);
 
   return (
     <Wrapper>
@@ -53,6 +60,74 @@ const Search = () => {
             Search
           </button>
         </div>
+
+        <div className="result-container">
+          {!search ? (
+            <div className="mock-text">
+              Please use the search bar to find the movie or show you want.
+            </div>
+          ) : (
+            <>
+              {!searchResults ? (
+                <div>No Results</div>
+              ) : (
+                <div className="main">
+                  <h1 className="keyword">Search Related To {search}</h1>
+                  <div className="results-main-grid">
+                    {searchResults?.map((res) => {
+                      return (
+                        <div
+                          key={res.id}
+                          className="data__container"
+                          onClick={() => {
+                            if (res.media_type === "tv") {
+                              router.push(`/show/${res.id}`);
+                            } else {
+                              router.push(`/movies/${res.id}`);
+                            }
+                          }}
+                        >
+                          <Image
+                            src={coverImage + res.poster_path}
+                            alt={res.title || res.original_title}
+                            layout="intrinsic"
+                            height="350px"
+                            width="250px"
+                            className="container-image"
+                          />
+                          <div className="overlay">
+                            <p className="rating">
+                              {res.vote_average?.toFixed(1)}
+                            </p>
+                          </div>
+                          <h3 className="name">
+                            {res.title?.length > 30 ||
+                            res.original_title?.length > 30 ||
+                            res.name?.length > 30 ||
+                            res.original_name?.length > 30
+                              ? res.title?.slice(0, 30) + "..." ||
+                                res.original_title?.slice(0, 30) + "..." ||
+                                res.name?.slice(0, 30) + "..." ||
+                                res.original_name?.slice(0, 30) + "..."
+                              : res.title ||
+                                res.original_title ||
+                                res.name ||
+                                res.original_name}
+                          </h3>
+                        </div>
+                      );
+                    })}
+                  </div>
+                  {totalPages > 1 && currentPage < totalPages && (
+                    <button className="load-more-button" onClick={handleMore}>
+                      Load More...
+                    </button>
+                  )}
+                </div>
+              )}
+            </>
+          )}
+        </div>
       </div>
     </Wrapper>
   );
@@ -67,6 +142,7 @@ const Wrapper = styled.div`
     max-width: 1234px;
     margin: 0 auto;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
   }
@@ -114,6 +190,104 @@ const Wrapper = styled.div`
     &:hover {
       box-shadow: none;
       transform: none;
+    }
+  }
+
+  .mock-text {
+    color: white;
+    font-family: "Poppins";
+    font-weight: 500;
+    margin-top: 100px;
+    text-align: center;
+  }
+
+  .keyword {
+    text-align: center;
+    font-family: "Poppins";
+  }
+
+  .main {
+    display: flex;
+    flex-direction: column;
+    margin: 30px 0;
+  }
+
+  .results-main-grid {
+    margin: 30px 0;
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    grid-gap: 20px;
+    align-items: center;
+    justify-content: center;
+    @media (max-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+      margin: 30px 10px;
+    }
+  }
+
+  .data__container {
+    width: 100%;
+    height: max-content;
+    margin: 0 10px 0 0;
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    position: relative;
+  }
+
+  .container-image {
+    border-radius: 5px;
+    transition: all 0.35s ease-in-out;
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50px;
+    height: 50px;
+    background: rgba(0, 0, 0, 0.5);
+    transition: all 0.35s ease-in-out;
+    border-radius: 5px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+  }
+
+  .rating {
+    color: #fff500;
+    font-family: "Poppins";
+  }
+
+  .name {
+    color: white;
+    font-family: "Poppins";
+    margin: 0 10px 0 0;
+  }
+
+  .load-more-button {
+    width: max-content;
+    align-self: center;
+    outline: none;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-right: 10px;
+    font-family: "Poppins";
+    margin-top: 10px;
+    border-radius: 6px;
+    width: max-content;
+    font-weight: 600;
+    font-size: 25px;
+    background: #2547fc;
+    color: white;
+
+    @media (max-width: 768px) {
+      font-size: 15px;
     }
   }
 `;
