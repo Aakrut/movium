@@ -6,6 +6,9 @@ export default function Home({
   getPopularShows,
   getTopRatedMovies,
   getTopRatedShows,
+  getActionMovies,
+  getFamilyShows,
+  getDocumentaryMovies,
 }) {
   return (
     <>
@@ -15,6 +18,9 @@ export default function Home({
         <RowShow data={getPopularShows} title="Popular Shows" />
         <Row data={getTopRatedMovies} title="Top Rated Movies" />
         <RowShow data={getTopRatedShows} title="Most Watched Shows" />
+        <Row data={getActionMovies} title="Action Movies" />
+        <RowShow data={getFamilyShows} title="Family Shows" />
+        <Row data={getDocumentaryMovies} title="Documentaries" />
       </div>
     </>
   );
@@ -27,6 +33,9 @@ export async function getServerSideProps() {
     getPopularShowsRes,
     getTopRatedMoviesRes,
     getTopRatedShowsRes,
+    getActionMoviesRes,
+    getFamilyShowRes,
+    getDocumentaryMoviesRes,
   ] = await Promise.all([
     fetch(
       `https://api.themoviedb.org/3/trending/all/day?api_key=${process.env.API_KEY}`
@@ -43,6 +52,16 @@ export async function getServerSideProps() {
     fetch(
       `https://api.themoviedb.org/3/tv/top_rated?api_key=${process.env.API_KEY}&language=en-US&page=1`
     ),
+
+    fetch(
+      `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.API_KEY}&with_genres=28`
+    ),
+    fetch(
+      `https://api.themoviedb.org/3/discover/tv?api_key=${process.env.API_KEY}&with_genres=10751`
+    ),
+    fetch(
+      `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.API_KEY}&with_genres=99`
+    ),
   ]);
 
   const [
@@ -51,12 +70,18 @@ export async function getServerSideProps() {
     getPopularShows,
     getTopRatedMovies,
     getTopRatedShows,
+    getActionMovies,
+    getFamilyShows,
+    getDocumentaryMovies,
   ] = await Promise.all([
     getTrendingRes.json(),
     getPopularMoviesRes.json(),
     getPopularShowsRes.json(),
     getTopRatedMoviesRes.json(),
     getTopRatedShowsRes.json(),
+    getActionMoviesRes.json(),
+    getFamilyShowRes.json(),
+    getDocumentaryMoviesRes.json(),
   ]);
 
   return {
@@ -66,6 +91,9 @@ export async function getServerSideProps() {
       getPopularShows: getPopularShows,
       getTopRatedMovies: getTopRatedMovies,
       getTopRatedShows: getTopRatedShows,
+      getActionMovies: getActionMovies,
+      getFamilyShows: getFamilyShows,
+      getDocumentaryMovies: getDocumentaryMovies,
     },
   };
 }
