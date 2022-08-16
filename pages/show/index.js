@@ -41,25 +41,25 @@ export async function getServerSideProps() {
     getSciFiFantasyShowRes,
   ] = await Promise.all([
     fetch(
-      `https://api.themoviedb.org/3/tv/on_the_air?api_key=${process.env.API_KEY}&language=en-US&page=1`
+      `https://api.themoviedb.org/3/tv/on_the_air?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US&page=1`
     ),
     fetch(
-      `https://api.themoviedb.org/3/tv/airing_today?api_key=${process.env.API_KEY}&language=en-US&page=1`
+      `https://api.themoviedb.org/3/tv/airing_today?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US&page=1`
     ),
     fetch(
-      `https://api.themoviedb.org/3/tv/top_rated?api_key=${process.env.API_KEY}&language=en-US&page=1`
+      `https://api.themoviedb.org/3/tv/top_rated?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US&page=1`
     ),
     fetch(
-      `https://api.themoviedb.org/3/discover/tv?api_key=${process.env.API_KEY}&with_genres=10759`
+      `https://api.themoviedb.org/3/discover/tv?api_key=${process.env.NEXT_PUBLIC_API_KEY}&with_genres=10759`
     ),
     fetch(
-      `https://api.themoviedb.org/3/discover/tv?api_key=${process.env.API_KEY}&with_genres=35`
+      `https://api.themoviedb.org/3/discover/tv?api_key=${process.env.NEXT_PUBLIC_API_KEY}&with_genres=35`
     ),
     fetch(
-      `https://api.themoviedb.org/3/discover/tv?api_key=${process.env.API_KEY}&with_genres=9648`
+      `https://api.themoviedb.org/3/discover/tv?api_key=${process.env.NEXT_PUBLIC_API_KEY}&with_genres=9648`
     ),
     fetch(
-      `https://api.themoviedb.org/3/discover/tv?api_key=${process.env.API_KEY}&with_genres=10765`
+      `https://api.themoviedb.org/3/discover/tv?api_key=${process.env.NEXT_PUBLIC_API_KEY}&with_genres=10765`
     ),
   ]);
 

@@ -14,7 +14,7 @@ const HeroSection = ({ res }) => {
     <>
       <Wrapper>
         <Swiper grabCursor={true}>
-          {res.results.map((data) => {
+          {res.results?.map((data) => {
             return (
               <SwiperSlide key={data.id}>
                 <BgContainer

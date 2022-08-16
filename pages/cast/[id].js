@@ -76,11 +76,11 @@ export async function getServerSideProps(context) {
   const { id } = context.query;
 
   const request = await fetch(
-    `https://api.themoviedb.org/3/person/${id}?api_key=${process.env.API_KEY}&language=en-US`
+    `https://api.themoviedb.org/3/person/${id}?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`
   ).then((response) => response.json());
 
   const requestBoth = await fetch(
-    `https://api.themoviedb.org/3/person/${id}/combined_credits?api_key=${process.env.API_KEY}&language=en-US`
+    `https://api.themoviedb.org/3/person/${id}/combined_credits?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`
   ).then((response) => response.json());
 
   return {
