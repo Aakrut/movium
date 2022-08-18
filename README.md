@@ -41,13 +41,7 @@ $ cd movium && npm install
 > Set up required environment variables.
 
 ```
-API_KEY=your_tmdb_api_key
-```
-
-> In the root directory open instance.js and set the TMDB API KEY
-
-```
-const API_KEY = "TMDB_API_KEY"
+NEXT_PUBLIC_API_KEY=your_tmdb_api_key
 ```
 
 > Navigate in the directory and run the following command
@@ -56,6 +50,8 @@ const API_KEY = "TMDB_API_KEY"
 npm run dev
 #or
 next dev
+#or 
+yarn dev
 ```
 
 NOTE : If you encounter any problems while searching, try refreshing because the tmdb api occasionally experiences network issues.
