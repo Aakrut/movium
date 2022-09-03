@@ -1,16 +1,17 @@
-# Movium
+# 🎥 Movium
 
 ## Movium is a Streaming App created with Next Js, the TMDB API, and all of the CSS magic, including Framer motion and Styled-Component with Search Functionality.🎥
 
+# 🔗 [Demo Link](https://movium-next-app.vercel.app/)
 
-### Functionalities
+# 💪🏻 Functionalities
 
 - Search
 - Cast Page
 - Similar Movies Page
 - Similar TV Shows Page
 
-### Tech
+# 💻 Tech
 
 - Frontend : [Next Js](https://nextjs.org/)
 - API : [TMDB API](https://www.themoviedb.org/)
@@ -20,13 +21,13 @@
 - Icons : [Iconsax React](https://iconsax-react.pages.dev/)
 - Fonts : [Google Fonts Poppins](https://fonts.google.com/specimen/Poppins)
 
-### Installation
+# 🔧 Installation
 
-#### Clone
+## Clone
 
 - Clone this repo with url `https://github.com/Aakrut/movium`
 
-##### Setup
+## Setup
 
 > Install npm dependencies using npm install
 
@@ -56,7 +57,7 @@ yarn dev
 
 NOTE : If you encounter any problems while searching, try refreshing because the tmdb api occasionally experiences network issues.
 
-#### Screenshots
+# 🖼️ Screenshots
 
 Home Page
 
