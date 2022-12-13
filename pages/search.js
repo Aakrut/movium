@@ -163,7 +163,7 @@ const Wrapper = styled.div`
     box-sizing: border-box;
     padding: 10px 20px;
     border-radius: 10px;
-    font-family: "Poppins";
+    font-family: "Manrope", sans-serif;
     color: #2547fc;
     font-weight: 400;
     transition: all 0.25s ease-in-out;
@@ -175,7 +175,7 @@ const Wrapper = styled.div`
     padding: 10px 20px;
     border-radius: 10px;
     cursor: pointer;
-    font-family: "Poppins";
+    font-family: "Manrope", sans-serif;
     background: #2547fc;
     color: white;
     transition: all 0.35s ease-in-out;
@@ -200,7 +200,7 @@ const Wrapper = styled.div`
 
   .mock-text {
     color: white;
-    font-family: "Poppins";
+    font-family: "Manrope", sans-serif;
     font-weight: 500;
     margin-top: 100px;
     text-align: center;
@@ -221,7 +221,7 @@ const Wrapper = styled.div`
 
   .keyword {
     text-align: center;
-    font-family: "Poppins";
+    font-family: "Manrope", sans-serif;
   }
 
   .main {
@@ -278,12 +278,12 @@ const Wrapper = styled.div`
 
   .rating {
     color: #fff500;
-    font-family: "Poppins";
+    font-family: "Manrope", sans-serif;
   }
 
   .name {
     color: white;
-    font-family: "Poppins";
+    font-family: "Manrope", sans-serif;
     margin: 0 10px 0 0;
   }
 
@@ -295,7 +295,7 @@ const Wrapper = styled.div`
     padding: 10px 20px;
     cursor: pointer;
     margin-right: 10px;
-    font-family: "Poppins";
+    font-family: "Manrope", sans-serif;
     margin-top: 10px;
     border-radius: 6px;
     width: max-content;

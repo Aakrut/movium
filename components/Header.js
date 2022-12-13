@@ -140,7 +140,7 @@ const Wrapper = styled.div`
   }
 
   .logo {
-    font-family: "Poppins";
+    font-family: "Manrope", sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 30px;
@@ -173,7 +173,7 @@ const Wrapper = styled.div`
     padding: 10px;
     margin: 0 5px;
 
-    font-family: "Poppins";
+    font-family: "Manrope", sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 20px;

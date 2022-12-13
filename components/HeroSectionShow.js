@@ -108,7 +108,7 @@ const BgContainer = styled.div`
   .details {
     z-index: 4;
     text-align: left;
-    font-family: "Poppins";
+    font-family: "Manrope", sans-serif;
     display: flex;
     flex-direction: column;
   }
@@ -162,7 +162,7 @@ const Button = styled.button`
   padding: 10px 20px;
   cursor: pointer;
   margin-right: 10px;
-  font-family: "Poppins";
+  font-family: "Manrope",sans-serif;
   margin-top: 10px;
   border-radius: 6px;
   width: max-content;

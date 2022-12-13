@@ -68,7 +68,7 @@ const Wrapper = styled.div`
     padding: 0 0 0 30px;
     color: white;
     font-size: 30px;
-    font-family: "Poppins";
+    font-family: "Manrope", sans-serif;
     margin: 20px 0;
   }
 
@@ -169,18 +169,18 @@ const Wrapper = styled.div`
 
   .rating {
     color: #fff500;
-    font-family: "Poppins";
+    font-family: "Manrope", sans-serif;
   }
 
   .name {
     color: white;
-    font-family: "Poppins";
+    font-family: "Manrope", sans-serif;
     margin: 0 10px 0 0;
   }
 
   .character {
     color: #2547fc;
-    font-family: "Poppins";
+    font-family: "Manrope",sans-serif;
     margin: 0 10px 0 0;
   }
 `;

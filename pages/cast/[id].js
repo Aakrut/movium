@@ -149,7 +149,7 @@ const Wrapper = styled.div`
   }
 
   .title {
-    font-family: "Poppins";
+    font-family: "Manrope", sans-serif;
     font-size: 60px;
     font-weight: 600;
 
@@ -190,7 +190,7 @@ const Wrapper = styled.div`
     background: rgba(255, 255, 255, 0.1);
     color: #9a9a9a;
     backdrop-filter: blur(120px);
-    font-family: "Poppins";
+    font-family: "Manrope", sans-serif;
     border-radius: 15px;
     padding: 10px 20px;
     border: 1px solid rgba(255, 255, 255, 0.4);
@@ -205,7 +205,7 @@ const Wrapper = styled.div`
     border: none;
     outline: none;
     border-radius: 30px;
-    font-family: "Poppins";
+    font-family: "Manrope", sans-serif;
     font-size: 20px;
     margin: 20px 0;
     background: #2547fc;
@@ -218,13 +218,13 @@ const Wrapper = styled.div`
   }
 
   .story-line {
-    font-family: "Poppins";
+    font-family: "Manrope", sans-serif;
     font-size: 30px;
     font-weight: 600;
   }
 
   .tagline {
-    font-family: "Poppins";
+    font-family: "Manrope", sans-serif;
     font-size: 20px;
     margin: 10px 0;
     background: rgba(255, 255, 255, 0.1);
@@ -293,7 +293,7 @@ const Wrapper = styled.div`
   }
 
   .details-3 {
-    font-family: "Poppins";
+    font-family: "Manrope", sans-serif;
     display: grid;
     grid-template-columns: repeat(3, max-content);
     gap: 10px;
@@ -357,7 +357,7 @@ const Wrapper = styled.div`
   }
 
   .overview {
-    font-family: "Poppins";
+    font-family: "Manrope", sans-serif;
     color: #9a9a9a;
 
     @media (max-width: 768px) {

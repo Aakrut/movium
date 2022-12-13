@@ -119,7 +119,7 @@ const SidebarLink = styled.ul`
   transition: all 0.2s ease-in-out;
   color: white;
   cursor: pointer;
-  font-family: "Poppins", sans-serif;
+  font-family: "Manrope", sans-serif;
   &:hover {
     color: #7aff74;
   }

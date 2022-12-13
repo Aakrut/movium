@@ -67,7 +67,7 @@ const Wrapper = styled.div`
   right: 0;
   bottom: 0;
   transition: all 0.35s ease-in-out;
-  font-family: "Poppins";
+  font-family: "Manrope", sans-serif;
 
   .close-button {
     position: fixed;
