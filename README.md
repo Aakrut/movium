@@ -2,7 +2,7 @@
 
 ## Movium is a Streaming App created with Next Js, the TMDB API, and all of the CSS magic, including Framer motion and Styled-Component with Search Functionality.🎥
 
-# 🔗 [Demo Link](https://movium-next-app.vercel.app/)
+# 🔗 [Demo Link](https://movium.netlify.app/)
 
 # 💪🏻 Functionalities
 
