@@ -55,7 +55,8 @@ next dev
 yarn dev
 ```
 
-NOTE : If you encounter any problems while searching, try refreshing because the tmdb api occasionally experiences network issues.
+> **Note**
+> If you encounter any problems while searching, try refreshing because the tmdb api occasionally experiences network issues.
 
 # 🖼️ Screenshots
 
