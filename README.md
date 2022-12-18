@@ -4,13 +4,6 @@
 
 # 🔗 [Demo Link](https://movium.netlify.app/)
 
-# 💪🏻 Functionalities
-
-- Search
-- Cast Page
-- Similar Movies Page
-- Similar TV Shows Page
-
 # 💻 Tech
 
 - Frontend : [Next Js](https://nextjs.org/)
@@ -51,8 +44,6 @@ NEXT_PUBLIC_API_KEY=your_tmdb_api_key
 npm run dev
 #or
 next dev
-#or 
-yarn dev
 ```
 
 > **Note**
