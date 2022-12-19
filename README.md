@@ -85,4 +85,4 @@ Cast Page
 
 Responsive
 
-![responsivepage](https://user-images.githubusercontent.com/67114280/179531473-3ce7ed31-82fd-45e3-a44b-b534a2790fc7.png)
+![responsivepage](https://user-images.githubusercontent.com/67114280/208359966-68549df7-1f18-4327-990f-fb08191f302c.png)
