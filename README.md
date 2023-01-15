@@ -10,7 +10,7 @@
 - Animation : [Framer Motion](https://www.framer.com/developers/)
 - Swiper : [Swiper React](https://swiperjs.com/react)
 - Icons : [Iconsax React](https://iconsax-react.pages.dev/)
-- Fonts : [Google Fonts Poppins](https://fonts.google.com/specimen/Poppins)
+- Fonts : [Google Fonts Manrope](https://fonts.google.com/specimen/Manrope)
 
 # 🔧 Installation
 
