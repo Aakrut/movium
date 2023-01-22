@@ -16,14 +16,17 @@
 
 ## Clone
 
-- Clone this repo with url `https://github.com/Aakrut/movium`
+- Clone this repo with url 
+```shell
+git clone https://github.com/Aakrut/movium
+```
 
 ## Setup
 
 > Install npm dependencies using npm install
 
-```
-$ cd movium && npm install 
+```shell
+cd movium && npm install 
 ```
 
 > Set up the TMDB API key
@@ -42,6 +45,8 @@ NEXT_PUBLIC_API_KEY=your_tmdb_api_key
 npm run dev
 #or
 next dev
+#or 
+yarn dev
 ```
 
 > **Note**
